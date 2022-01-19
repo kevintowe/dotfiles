@@ -6,6 +6,4 @@
 - Dock Preferences
 - Mission Control Preference (don't rearrange spaces)
 - Finder Show Path Bar
-- .zshrc
 - Git (config and SSH)
-- Homebrew Install
