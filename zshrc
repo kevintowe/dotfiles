@@ -4,6 +4,7 @@ echo 'Hello from .zshrc'
 # Syntak highlighting for man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HOMEBREW_CASK_OPTS="--no-quarantine"
+export N_PREFIX="$HOME/.n"
 
 # Change ZSH Options
 
@@ -17,6 +18,7 @@ PROMPT='
 # Add Locations to $PATH Varialbe
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="$PATH:$N_PREFIX/bin"
 
 # Write Handy Functions
 function mkcd() {

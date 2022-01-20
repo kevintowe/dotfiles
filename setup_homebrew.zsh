@@ -2,15 +2,22 @@
 
 echo "\n<<< Starting Homebrew Setup >>>\n"
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# brew install httpie
-# brew install bat
-
-# brew install pulumis
-
-# brew install --cask google-chrome --no-quarantine
-# brew install  --cask visual-studio-code --no-quarantine
-# brew install --cask alfred --no-quarantine
+if exists brew; then
+  echo "brew exists, skipping install"
+else
+  echo "brew doesn't exists, continuing with install"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 brew bundle --verbose
+
+# Should we wrap this in a conditional?
+echo "Enter superuser (sudo) password to accept Xcode license"
+sudo xcodebuild -license accept
+sudo xcodebuild -runFirstLaunch
+
+# This works to solve the Insecure Directories issue:
+# compaudit | xargs chmod go-w
+# But this is from the Homebrew site, though `-R` was needed:
+# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+chmod -R go-w "$(brew --prefix)/share"
